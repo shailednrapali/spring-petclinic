@@ -7,16 +7,16 @@ spec:
   selector:
     matchLabels:
       app: spc-argocd
-      version: "10"
+      version: "11"
   template:
     metadata:
       labels:
         app: spc-argocd
-        version: "10"
+        version: "11"
     spec:
       containers:
       - name: spc-deployment
-        image: pkkanumuri/spc:spc-latest
+        image: pkkanumuri/spc:spc-11
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
