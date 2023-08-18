@@ -15,8 +15,7 @@
 
 #WORKDIR /home/$user
 
-#ENTRYPOINT ["java","-jar","sp-Dring.profiles.active=mysql","/app.jar"]
-
+#ENTRYPOINT ["java","-jar","-Dspring.profiles.active=mysql","/app.jar"]
 
 
 
@@ -31,4 +30,5 @@ RUN ./mvnw dependency:resolve
 COPY src ./src
 
 #CMD ["./mvnw", "-Dring.profiles.active=mysql", "spring-boot:run"]
-CMD ["./mvnw", "spring-boot:run", "-Dspring.profiles.active=mysql"]
+#CMD ["./mvnw", "spring-boot:run", "-Dspring.profiles.active=mysql"]
+CMD ["./mvn", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
