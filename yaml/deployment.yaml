@@ -1,22 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: spc-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: spc-argocd
-      version: "11"
-  template:
-    metadata:
-      labels:
-        app: spc-argocd
-        version: "11"
-    spec:
-      containers:
-      - name: spc-deployment
-        image: pkkanumuri/spc:spc-11
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: spc-deployment
+#spec:
+#  replicas: 2
+#  selector:
+#    matchLabels:
+#      app: spc-argocd
+#      version: "11"
+#  template:
+#    metadata:
+#      labels:
+#        app: spc-argocd
+#        version: "11"
+#    spec:
+#      containers:
+#      - name: spc-deployment
+#        image: pkkanumuri/spc:spc-11
+#        imagePullPolicy: IfNotPresent
+#        ports:
+#        - containerPort: 8080
