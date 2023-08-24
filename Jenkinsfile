@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build Maven package') {
             steps {
-                sh '/usr/local/src/apache-maven/bin/mvn clean install'
+                sh '/usr/share/maven/bin/mvn clean install'
             }
         }
     }
