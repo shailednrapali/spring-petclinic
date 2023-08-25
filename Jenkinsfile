@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_PASSWORD=credentials('DOCKERHUB_CREDS')
+        DOCKER_PASSWORD=Password@123
         DOCKER_USERNAME="wissenbaba"
     }
     
