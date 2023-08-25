@@ -1,11 +1,7 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKER_PASSWORD=Password@123
-        DOCKER_USERNAME="wissenbaba"
-    }
-    
+      
     stages {
         stage('Checkout') {
             steps {
@@ -22,7 +18,7 @@ pipeline {
 
          stage('Dockerhub login') {
             steps {
-                sh 'echo $DOCKER_PASSWORD |sudo docker login -u $DOCKER_USERNAME --password-stdin'
+                sh 'echo Password@123 |sudo docker login -u wissenbaba --password-stdin'
             }
         }
     }
