@@ -2,9 +2,8 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_PASSWORD=credentials('DOCKER_PASSWORD')
-        dockerhub_repo="sharath2787"
-        DOCKER_USERNAME="sharath2787"
+        DOCKER_PASSWORD="echo(DOCKER_PASSWORD)"
+        DOCKER_USERNAME="wissenbaba"
     }
     
     stages {
