@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_PASSWORD="echo(DOCKER_PASSWORD)"
+        
         DOCKER_USERNAME="wissenbaba"
     }
     
