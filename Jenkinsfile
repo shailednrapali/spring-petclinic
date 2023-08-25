@@ -1,10 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        
-        DOCKER_USERNAME="wissenbaba"
-    }
     
     stages {
         stage('Checkout') {
@@ -20,9 +16,16 @@ pipeline {
             }
         }
 
-        stage('Dockerhub login') {
+         stage('Build docker image') {
             steps {
-                sh 'echo $DOCKER_PASSWORD |sudo docker login -u $DOCKER_USERNAME --password-stdin'
+                sh 'cp -p /home/ubuntu/Dockerfile /home/ubuntu/.jenkins/workspace/First/target/'
+                sh 'cd /home/ubuntu/.jenkins/workspace/First/target/; sudo docker build -t petclinic .'
+            }
+        }
+        
+		  stage('Dockerhub login') {
+            steps {
+                sh 'echo Password@123 |sudo docker login -u wissenbaba --password-stdin'
             }
         }
     }
