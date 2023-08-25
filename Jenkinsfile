@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_PASSWORD=credentials('DOCKERHUB_CREDS')
+        DOCKER_PASSWORD=credentials('DOCKER_PASSWORD')
         dockerhub_repo="sharath2787"
         DOCKER_USERNAME="sharath2787"
     }
