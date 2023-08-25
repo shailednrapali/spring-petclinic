@@ -1,27 +1,18 @@
 pipeline {
     agent any
-
-     
-    stages {
-        stage('clean Maven package') {
-            steps {
-                sh '/usr/share/maven/bin/mvn clean'
-            }
-        }
     }
 
     stages {
-        stage('compile Maven code') {
+        stage('Checkout') {
             steps {
-                sh '/usr/share/maven/bin/mvn compile'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                          userRemoteConfigs: [[url: 'https://github.com/yourusername/your-repo.git']]])
             }
         }
-    }
 
-    stages {
-        stage('Build Maven package') {
+        stage('Build') {
             steps {
-                sh '/usr/share/maven/bin/mvn package'
+                sh '/usr/share/maven/bin/mvn clean compile package'
             }
         }
     }
