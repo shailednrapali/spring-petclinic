@@ -1,7 +1,11 @@
 pipeline {
     agent any
     
-
+    environment {
+        DOCKER_PASSWORD=credentials('DOCKERHUB_CREDS')
+        DOCKER_USERNAME="wissenbaba"
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -13,6 +17,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh '/usr/share/maven/bin/mvn clean compile package'
+            }
+        }
+
+         stage('Dockerhub login') {
+            steps {
+                sh 'echo $DOCKER_PASSWORD |sudo docker login -u $DOCKER_USERNAME --password-stdin'
             }
         }
     }
