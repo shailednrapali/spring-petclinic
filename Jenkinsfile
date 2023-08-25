@@ -21,12 +21,6 @@ pipeline {
             }
         }
 
-         stage('Dockerhub login') {
-            steps {
-                sh 'echo Password@123 |sudo docker login -u wissenbaba --password-stdin'
-            }
-        }
-
         stage('Dockerhub login') {
             steps {
                 sh 'echo $DOCKER_PASSWORD |sudo docker login -u $DOCKER_USERNAME --password-stdin'
