@@ -5,8 +5,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                          userRemoteConfigs: [[url: 'https://github.com/yourusername/your-repo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], 
+                          userRemoteConfigs: [[url: 'https://github.com/shailednrapali/spring-petclinic.git']]])
             }
         }
 
