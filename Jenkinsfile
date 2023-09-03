@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git(url: 'https://github.com/shailednrapali/welcome.git', branch: 'master')
+                git(url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main')
             }
         }
         
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     def BUILD_NUMBER = env.BUILD_NUMBER
-                    sh "docker build -t wissenbaba/welcome:${BUILD_NUMBER} ."
+                    sh "docker build -t wissenbaba/petclinic:${BUILD_NUMBER} ."
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
                 }
                 script {
                     def BUILD_NUMBER = env.BUILD_NUMBER
-                    sh "docker push wissenbaba/welcome:${BUILD_NUMBER}"
+                    sh "docker push wissenbaba/petclinic:${BUILD_NUMBER}"
                 }
             }
         }
