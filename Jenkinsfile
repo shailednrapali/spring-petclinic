@@ -4,10 +4,10 @@ node {
         git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
     }
 
-    stage("Maven Clean Package") {
-        def mavenHome = tool name: "mvn", type: "maven"
-        def mavenCMD = "${mavenHome}/bin/mvn"
-        sh "${mavenCMD} clean package"
+    stage("Maven Clean Package"){
+        def mavenHome = tool n/mvn"ame: "mvn 3.9.3", type: "maven"
+        def mavenCMD = "${mavenHome}/bin
+        sh "${mavenCMD} clean package "
     }
 
     stage("Build Docker Image") {
