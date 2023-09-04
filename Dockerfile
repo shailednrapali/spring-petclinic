@@ -2,7 +2,7 @@
 FROM openjdk:11
 
 # Create a directory in the container to copy the WAR file into
-WORKDIR /home/ubuntu/.jenkins/workspace/Third/
+WORKDIR /home/ubuntu/.jenkins/workspace/First/
 
 # Copy the webapp.war file from your local machine into the container
 COPY /webapp/target/webapp.war .
