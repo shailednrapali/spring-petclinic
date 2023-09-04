@@ -1,4 +1,5 @@
-FROM eclipse-temurin:17-jdk-jammy
+#FROM eclipse-temurin:17-jdk-jammy
+FROM openjdk:17
  
 WORKDIR /var/lib/jenkins/workspace/First/
 #WORKDIR /app
