@@ -6,7 +6,7 @@ node {
     }
 
     stage("Set Maven Environment") {
-        def mvnHome = tool name: '/usr/share/maven/ 3.6.3' // Use the tool name from Jenkins configuration
+        def mvnHome = tool name: 'mvn 3.6.3' // Use the tool name from Jenkins configuration
         env.MAVEN_HOME = mvnHome
         sh 'export PATH=$MAVEN_HOME/bin:$PATH'
     }
