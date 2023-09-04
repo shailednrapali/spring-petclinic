@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jdk-jammy
  
-WORKDIR /app
+WORKDIR /var/lib/jenkins/workspace/First/
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
