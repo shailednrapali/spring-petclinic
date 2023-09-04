@@ -10,4 +10,5 @@ RUN ./mvnw dependency:resolve
 
 COPY src ./src
 
+CMD ["java", "-jar", "/target/webapp.war"]
 #CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
