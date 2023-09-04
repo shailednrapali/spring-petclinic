@@ -14,7 +14,6 @@ node {
     stage("Maven Clean Package") {
         sh "${env.MAVEN_HOME}/bin/mvn clean package" // Use double quotes here
         }
-    }
 
     stage("Build Docker Image") {
         sh "docker build -t wissenbaba/petclinic:${buildNumber} ."
