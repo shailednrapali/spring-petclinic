@@ -9,10 +9,8 @@ node{
         def mavenHome = tool name: "mvn 3.9.3", type: "maven"
         def mavenCMD = "${mavenHome}/bin/mvn"
         sh "${mavenCMD} clean package "
-  }
-}		
-
-    
+  }		
+ 
     stage("Build Docker Image") {
          sh "docker build -t wissenbaba/welcome:${buildNumber} ."
     }
