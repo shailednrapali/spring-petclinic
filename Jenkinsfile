@@ -7,10 +7,12 @@ pipeline {
                 git(url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main')
             }
         }
-        
-        stage('Maven Clean Package') {
-            steps {
-                sh 'mvn clean package'
+
+     stage("Maven Clean Package"){
+      steps {
+        def mavenHome = tool name: "mvn 3.6.3", type: "maven"
+        def mavenCMD = "${mavenHome}/bin/mvn"
+        sh "${mavenCMD} clean package "        
             }
         }
         
