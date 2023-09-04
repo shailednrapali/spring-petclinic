@@ -1,7 +1,7 @@
 node{
     def buildNumber = BUILD_NUMBER
     stage("Git CheckOut"){
-        git url: 'https://github.com/shailednrapali/welcome.git',branch: 'master'
+        git url: 'https://github.com/shailednrapali/spring-petclinic.git',branch: 'main'
     }
 
    
