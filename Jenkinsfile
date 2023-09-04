@@ -1,36 +1,25 @@
-pipeline {
-    agent any
-
-    environment {
-       MAVEN_HOME = tool name: '/usr/share/maven/', type: 'hudson.tasks.Maven$MavenInstallation'
+node{
+    def buildNumber = BUILD_NUMBER
+    stage("Git CheckOut"){
+        git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
     }
 
-    stages {
-        stage("Git CheckOut") {
-            steps {
-                git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
-            }
-        }
-
-        stage("Maven Clean Package") {
-            steps {
-                sh "${MAVEN_HOME}/bin/mvn clean package"
-            }
-        }
-
-        stage("Build Docker Image") {
-            steps {
-                sh "docker build -t wissenbaba/petclinic:${BUILD_NUMBER} ."
-            }
-        }
-
-        stage("Docker Login and Push Image to Docker Hub") {
-            steps {
-                 withCredentials([string(credentialsId: 'Docker_Hub_PWD', variable: 'Docker_Hub_PWD')]) {
-                    sh "docker login -u wissenbaba -p ${Docker_Hub_PWD}"
-                }
-                sh "docker push wissenbaba/petclinic:${BUILD_NUMBER}"
-            }
-        }
+   
+    stage("Maven Clean Package"){
+        def mavenHome = tool name: "mvn 3.6.3", type: "maven"
+        def mavenCMD = "${mavenHome}/bin/mvn"
+        sh "${mavenCMD} clean package "
+  }
+}		
+    
+    stage("Build Docker Image") {
+         sh "docker build -t wissenbaba/petclinic:${buildNumber} ."
+    }
+    
+    stage("Docker Login and Push Image in Docker Hub") {
+        withCredentials([string(credentialsId: 'Docker_Hub_PWD', variable: 'Docker_Hub_PWD')]) {
+           sh "docker login -u wissenbaba -p ${Docker_Hub_PWD}"
+     }
+      sh "docker push  wissenbaba/petclinic:${buildNumber} "
     }
 }
