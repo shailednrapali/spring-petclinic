@@ -6,10 +6,14 @@ node {
     }
 
     stage("Maven Clean Package") {
-    def mavenHome = tool name: "Maven 3.6.3", type: "hudson.tasks.Maven$MavenInstallation"
-    def mavenCMD = "${mavenHome}/bin/mvn"
-    sh "${mavenCMD} clean package"
-}
+        withMaven(
+            maven: 'Maven 3.6.3',
+            mavenSettingsConfig: 'YourMavenSettings' // Replace with the correct Maven settings if needed
+        ) {
+            sh 'mvn clean package'
+        }
+    }
+
     stage("Build Docker Image") {
         sh "docker build -t wissenbaba/petclinic:${buildNumber} ."
     }
