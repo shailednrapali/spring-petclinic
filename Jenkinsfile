@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-       MAVEN_HOME = tool name: '/usr/share/maven', type: 'hudson.tasks.Maven$MavenInstallation'
+       MAVEN_HOME = tool name: '/usr/share/maven/bin/mvn', type: 'hudson.tasks.Maven$MavenInstallation'
     }
 
     stages {
