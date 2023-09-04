@@ -1,12 +1,3 @@
-
-It seems that you have configured Maven correctly on your EC2 instance, and you've also set up Jenkins to use Maven 3.6.3 with the correct tool name.
-
-Given that the Maven tool is correctly configured in Jenkins as "Maven 3.6.3" with the name "/usr/share/maven," and you've confirmed that Maven 3.6.3 is available on your EC2 instance, there might be an issue with how Jenkins is detecting the tool in your pipeline.
-
-Let's make sure that the tool is correctly referenced in your Jenkins pipeline:
-
-groovy
-Copy code
 pipeline {
     agent any
 
