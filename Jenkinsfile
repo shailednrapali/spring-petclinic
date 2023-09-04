@@ -5,13 +5,14 @@ node {
         git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
     }
 
+    stage("Set Maven Environment") {
+        def mvnHome = tool name: 'Maven 3.6.3'
+        env.MAVEN_HOME = mvnHome
+        sh 'export PATH=$MAVEN_HOME/bin:$PATH'
+    }
+
     stage("Maven Clean Package") {
-        withMaven(
-            maven: 'Maven 3.6.3',
-            mavenSettingsConfig: 'YourMavenSettings' // Replace with the correct Maven settings if needed
-        ) {
-            sh 'mvn clean package'
-        }
+        sh '${env.MAVEN_HOME}/bin/mvn clean package'
     }
 
     stage("Build Docker Image") {
