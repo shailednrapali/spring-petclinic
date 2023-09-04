@@ -1,5 +1,5 @@
 # Use the official OpenJDK 11 image as the base image
-FROM openjdk:11
+FROM openjdk:17
 
 # Create a directory in the container to copy the WAR file into
 WORKDIR /home/ubuntu/.jenkins/workspace/First/
