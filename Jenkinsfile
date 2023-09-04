@@ -12,7 +12,8 @@ node {
     }
 
     stage("Maven Clean Package") {
-        sh '${env.MAVEN_HOME}/bin/mvn clean package'
+        sh "${env.MAVEN_HOME}/bin/mvn clean package" // Use double quotes here
+        }
     }
 
     stage("Build Docker Image") {
