@@ -3,14 +3,12 @@ FROM eclipse-temurin:17-jdk-jammy
  
 #WORKDIR /var/lib/jenkins/workspace/second/
 #USER jenkins
-WORKDIR /app
+#WORKDIR /app
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
 COPY src ./src
-
-#COPY /target/*.jar .
 
 #CMD ["java", "-jar", "*.jar"]
 #CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
