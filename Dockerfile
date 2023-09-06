@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk-jammy
 #FROM openjdk:17
  
-WORKDIR /var/lib/jenkins/workspace/First/
+WORKDIR /var/lib/jenkins/workspace/second/
 USER jenkins
 #WORKDIR /app
 
