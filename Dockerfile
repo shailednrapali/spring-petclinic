@@ -11,5 +11,5 @@ USER jenkins
 
 COPY src ./src
 
-#CMD ["java", "-jar", "/target/webapp.war"]
-CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
+CMD ["java", "-jar", "/target/*.jar"]
+#CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
