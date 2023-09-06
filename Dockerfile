@@ -5,9 +5,9 @@ WORKDIR /var/lib/jenkins/workspace/First/
 USER jenkins
 #WORKDIR /app
 
-#COPY .mvn/ .mvn
-#COPY mvnw pom.xml ./
-#RUN ./mvnw dependency:resolve
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
 #COPY src ./src
 
 COPY /target/*.jar .
