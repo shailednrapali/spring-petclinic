@@ -5,14 +5,8 @@ node {
         git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
     }
 
-    stage("Set Maven Environment") {
-        def mvnHome = tool name: '/usr/share/maven/' // Use the tool name from Jenkins configuration
-        env.MAVEN_HOME = mvnHome
-        sh "export PATH=${env.MAVEN_HOME}/bin:$PATH"
-    }
-
     stage("Maven Clean Package") {
-        sh "${env.MAVEN_HOME}/bin/mvn clean package" // Use double quotes here
+        sh "/usr/share/maven/bin/mvn clean install package" // Use double quotes here
         }
 
     stage("Build Docker Image") {
