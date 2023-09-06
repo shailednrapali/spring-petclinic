@@ -8,9 +8,9 @@ WORKDIR /var/lib/jenkins/workspace/second/
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
-#COPY src ./src
+COPY src ./src
 
-COPY /target/*.jar .
+#COPY /target/*.jar .
 
-CMD ["java", "-jar", "*.jar"]
-#CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
+#CMD ["java", "-jar", "*.jar"]
+CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
