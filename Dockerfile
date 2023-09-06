@@ -1,5 +1,5 @@
-#FROM eclipse-temurin:17-jdk-jammy
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk-jammy
+#FROM openjdk:17
  
 WORKDIR /var/lib/jenkins/workspace/First/
 #WORKDIR /app
@@ -10,5 +10,5 @@ RUN ./mvnw dependency:resolve
 
 COPY src ./src
 
-CMD ["java", "-jar", "/target/webapp.war"]
-#CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
+#CMD ["java", "-jar", "/target/webapp.war"]
+CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
