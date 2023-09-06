@@ -2,6 +2,7 @@ FROM eclipse-temurin:17-jdk-jammy
 #FROM openjdk:17
  
 WORKDIR /var/lib/jenkins/workspace/First/
+USER jenkins
 #WORKDIR /app
 
 COPY .mvn/ .mvn
