@@ -1,23 +1,36 @@
-node {
-    def buildNumber = BUILD_NUMBER
+pipeline {
+    agent any
 
-    stage("Git CheckOut") {
-        git url: 'https://github.com/shailednrapali/spring-petclinic.git', branch: 'main'
+    environment {
+        MAVEN_HOME = tool name: "mvn 3.9.3", type: "maven"
     }
 
-    stage("Maven Clean Package"){
-        def mavenHome = tool name: "mvn 3.9.3", type: "maven"
-        def mavenCMD = "${mavenHome}/bin/mvn"
-    }
-
-    stage("Build Docker Image") {
-        sh "docker build -t wissenbaba/petclinic:spc-${buildNumber} ."
-    }
-
-    stage("Docker Login and Push Image in Docker Hub") {
-        withCredentials([string(credentialsId: 'Docker_Hub_PWD', variable: 'Docker_Hub_PWD')]) {
-            sh "docker login -u wissenbaba -p ${Docker_Hub_PWD}"
+    stages {
+        stage("Git CheckOut") {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/shailednrapali/spring-petclinic.git']]])
+            }
         }
-        sh "docker push wissenbaba/petclinic:spc-${buildNumber}"
+
+        stage("Maven Clean Package") {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn clean package"
+            }
+        }
+
+        stage("Build Docker Image") {
+            steps {
+                sh "docker build -t wissenbaba/petclinic:spc-\${BUILD_NUMBER} ."
+            }
+        }
+
+        stage("Docker Login and Push Image in Docker Hub") {
+            steps {
+                withCredentials([string(credentialsId: 'Docker_Hub_PWD', variable: 'Docker_Hub_PWD')]) {
+                    sh "docker login -u wissenbaba -p \${Docker_Hub_PWD}"
+                }
+                sh "docker push wissenbaba/petclinic:spc-\${BUILD_NUMBER}"
+            }
+        }
     }
 }
