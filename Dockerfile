@@ -1,16 +1,11 @@
 FROM eclipse-temurin:17-jdk-jammy
-#FROM openjdk:17
  
-#WORKDIR /var/lib/jenkins/workspace/second/
-#USER jenkins
-#WORKDIR /app
-
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
 COPY src ./src
 
-EXPOSE 7070
+#EXPOSE 7070
 
 #CMD ["java", "-jar", "*.jar"]
 #CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
