@@ -9,7 +9,8 @@ COPY src ./src
 
 #CMD ["java", "-jar", "*.jar"]
 #CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
-CMD ["./mvnw", "spring-boot:run"]
+#CMD ["./mvnw", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "*.jar" ]
 
 
 
