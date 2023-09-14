@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,3 +15,21 @@ spec:
   syncPolicy:
     automated: {}
 
+=======
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-pc-app
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc' # Replace with your ArgoCD server URL
+    namespace: default
+  project: default
+  source: []
+    repoURL: 'https://github.com/shailednrapali/spring-petclinic.git'  # Replace with your Git repository URL
+    targetRevision: HEAD
+    path: YAML/App_deployment
+  syncPolicy:
+    automated: {}
+
+>>>>>>> 9425523546e3daf6b39946a1d5c03f030e7a4783
