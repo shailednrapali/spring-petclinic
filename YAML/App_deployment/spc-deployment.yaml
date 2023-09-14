@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: spc-app
-          image: wissenbaba/petclinic:spc-1
+          image: wissenbaba/petclinic:spc-2
           env:
             - name: MYSQL_URL
              #Below is kubernetes mysql pod
