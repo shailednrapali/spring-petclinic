@@ -10,8 +10,8 @@ COPY src ./src
 #EXPOSE 7070
 
 #CMD ["java", "-jar", "*.jar"]
-#CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
-CMD ["./mvnw", "spring-boot:run"]
+CMD ["./mvnw", "-Dspring-boot.run.profiles=mysql", "spring-boot:run"]
+#CMD ["./mvnw", "spring-boot:run"]
 
 
 
