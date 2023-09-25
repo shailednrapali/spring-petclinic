@@ -1,0 +1,12 @@
+piVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-log
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 100Mi
+  hostPath:
+    path: /var/lib/mysql
