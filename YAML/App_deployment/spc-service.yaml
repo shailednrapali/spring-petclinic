@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: pet
+  #  namespace: pet
   name: petclinic-service
 spec:
   selector:
