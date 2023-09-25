@@ -13,4 +13,4 @@ spec:
   storageClassName: gp2 #Default SC created by CSI driver
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi
